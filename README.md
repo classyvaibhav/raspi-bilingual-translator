@@ -33,7 +33,7 @@ This project implements a **real-time bilingual voice translator** using a Raspb
 | 5V power supply or battery    | 1        | (USB adapter or battery pack)       |
 
 ---
-## Wiring Diagram
+## Block Diagram
 
 ![Wiring Diagram](block_diagram.png)
 
