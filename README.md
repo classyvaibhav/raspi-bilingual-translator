@@ -39,7 +39,7 @@ This project implements a **real-time bilingual voice translator** using a Raspb
 
 ## Wiring Diagram
 
-*(Placeholder for wiring diagram image)*
+![Wiring Diagram](circuit_diagram.png)
 
 Refer to datasheets and Pi pinouts for exact wiring.  Key connections include:
 
