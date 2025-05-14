@@ -202,11 +202,11 @@ The translator program will now start on boot and restart if it crashes.
 
 ---
 
+This project is licensed under the MIT License (see `LICENSE` file).
 ## License
 
-This project is licensed under the MIT License (see `LICENSE` file).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
 
 ## Credits
 
