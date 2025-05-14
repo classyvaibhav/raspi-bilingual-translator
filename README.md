@@ -57,7 +57,7 @@ Great, I’ll generate a GPIO connection table specifically for your Raspberry P
 I’ll let you know when it’s ready.
 
 
-# GPIO Pin Connections
+## GPIO Pin Connections
 
 The table below lists each peripheral and its GPIO connections on the Raspberry Pi Zero 2 W for the bilingual translator project.  Each row shows the component and signal, the Broadcom GPIO number, the physical pin, and notes (such as I2C or pull-up requirements).
 
