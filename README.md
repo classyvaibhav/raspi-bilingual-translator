@@ -52,6 +52,37 @@ Refer to datasheets and Pi pinouts for exact wiring.  Key connections include:
 (Add an actual wiring diagram image here when available.)
 
 ---
+Great, I’ll generate a GPIO connection table specifically for your Raspberry Pi Zero 2 W translator project. It will include connections for the OLED display, buttons, and the PAM8403 amplifier.
+
+I’ll let you know when it’s ready.
+
+
+# GPIO Pin Connections
+
+The table below lists each peripheral and its GPIO connections on the Raspberry Pi Zero 2 W for the bilingual translator project.  Each row shows the component and signal, the Broadcom GPIO number, the physical pin, and notes (such as I2C or pull-up requirements).
+
+| Component                          | Function/Purpose                 | BCM GPIO | Physical Pin | Notes                                            |
+| ---------------------------------- | -------------------------------- | -------- | ------------ | ------------------------------------------------ |
+| **OLED Display (SSD1306) – SDA**   | I2C SDA (serial data)            | 2        | 3            | I2C data line (SDA1), with internal pull-up      |
+| **OLED Display (SSD1306) – SCL**   | I2C SCL (serial clock)           | 3        | 5            | I2C clock line (SCL1), with internal pull-up     |
+| **OLED Display (SSD1306) – VCC**   | 3.3V power supply                | –        | 1            | +3.3V power (do **not** use 5V)                  |
+| **OLED Display (SSD1306) – GND**   | Ground                           | –        | 14           | Ground (GND)                                     |
+| **Button (Source Language)**       | GPIO input (select source lang.) | 17       | 11           | Button to GND; use internal pull-up (active LOW) |
+| **Button (Target Language)**       | GPIO input (select target lang.) | 27       | 13           | Button to GND; use internal pull-up (active LOW) |
+| **Button (Translate)**             | GPIO input (start translation)   | 22       | 15           | Button to GND; use internal pull-up (active LOW) |
+| **PAM8403 Amp (Left channel IN)**  | PWM audio output (left channel)  | 13       | 33           | PWM1 (audio left) (set GPIO13 to ALT0)           |
+| **PAM8403 Amp (Right channel IN)** | PWM audio output (right channel) | 18       | 12           | PWM0 (audio right) (set GPIO18 to ALT5)          |
+| **PAM8403 Amp – VCC (+5V)**        | Power +5V                        | –        | 2 (or 4)     | +5V power to amplifier (from Pi 5V rail)         |
+| **PAM8403 Amp – GND**              | Ground                           | –        | 6 (or 9)     | Ground (common)                                  |
+
+* *OLED I2C:*  The SSD1306 OLED uses the Pi’s I2C1 bus on GPIO2 (SDA) and GPIO3 (SCL). These pins have internal 1.8 kΩ pull-up resistors, so no external pull-ups are needed. Use 3.3 V (pin 1) for VCC and any GND pin (e.g. pin 14) for ground.
+* *Buttons:*  Each tactile button connects from a GPIO to GND, configured as an **active-low** input with the Pi’s internal pull-up enabled.  For example, GPIO17 (pin 11) can be tied to one side of the “Source” button, the other side to GND, and similarly for the “Target” (GPIO27) and “Translate” (GPIO22) buttons.
+* *Audio Amplifier:*  The PAM8403 stereo amplifier’s inputs are driven by the Pi’s PWM audio outputs.  Route the left channel (PWM1) to BCM13 (pin 33) and the right channel (PWM0) to BCM18 (pin 12).  In software, set GPIO13 to ALT0 (PWM1) and GPIO18 to ALT5 (PWM0) to enable PWM audio.  Provide the amplifier with +5V (e.g. pin 2) and GND (e.g. pin 6) from the Pi.
+
+All GPIO pin numbers above use **BCM** numbering.  (Physical pin numbers are the standard Pi header positions.)  Ensure I2C is enabled in `raspi-config` and PWM audio is routed correctly for sound output.
+
+**References:** Standard Pi pinout and connection guides used for mapping signals to GPIO.
+
 
 ## Setup Instructions
 
